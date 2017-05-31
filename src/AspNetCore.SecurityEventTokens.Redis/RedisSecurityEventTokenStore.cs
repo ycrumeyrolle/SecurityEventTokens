@@ -29,7 +29,7 @@ namespace AspNetCore.SecurityEventTokens.Redis
             await ConnectAsync();
 
             RedisKey key = ((RedisKey)token.Issuer).Append(token.JwtId);
-            var result = await _database.StringGetSetAsync(token.JwtId, token.RawJwt);
+            var result = await _database.StringGetSetAsync(token.JwtId, token.RawPayload);
 
             return result.IsNull ? StoreStatus.Stored : StoreStatus.Duplicated;
         }

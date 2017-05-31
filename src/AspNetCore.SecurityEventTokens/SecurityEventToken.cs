@@ -19,8 +19,6 @@ namespace AspNetCore.SecurityEventTokens
 
         public string TransactionNumber => GetClaim<string>("txn");
         
-        public string RawJwt => Claims.Aggregate(new JObject(), (agg, item) => { agg.Add(item.Key, item.Value); return agg; }, agg => agg.ToString());
-
         public static SecurityEventToken FromJwt(JsonWebToken jwt)
         {
             if (jwt == null)
@@ -28,7 +26,7 @@ namespace AspNetCore.SecurityEventTokens
                 throw new ArgumentNullException(nameof(jwt));
             }
 
-            return new SecurityEventToken(jwt.Claims, jwt.Header);
+            return new SecurityEventToken(jwt.Payload, jwt.Header);
         }
     }
 }

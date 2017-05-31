@@ -74,7 +74,7 @@ namespace AspNetCore.SecurityEventTokens
         {
             var eventStream = await _eventStreamMetadataService.GetEventStreamMetadataByIssuerAsync(token.Issuer);
             var claims = new List<Claim>();
-            foreach (var item in token.Claims)
+            foreach (var item in token.Payload)
             {
                 Claim claim;
                 switch (item.Value.Type)

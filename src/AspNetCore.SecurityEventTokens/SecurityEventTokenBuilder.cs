@@ -153,17 +153,17 @@ namespace AspNetCore.SecurityEventTokens
         {
             if (!_claims.ContainsKey("iss"))
             {
-                throw new InvalidOperationException("No 'iss' were defined. This property is mandatory.");
+                throw new InvalidOperationException("No claim 'iss' is defined. This claim is required.");
             }
 
             if (!_claims.ContainsKey("jti"))
             {
-                throw new InvalidOperationException("No 'jti' were defined. This property is mandatory.");
+                throw new InvalidOperationException("No claim 'jti' is defined. This claim is required.");
             }
 
             if (!_claims.ContainsKey("events"))
             {
-                throw new InvalidOperationException("No 'events' property were defined. This property is mandatory.");
+                throw new InvalidOperationException("No claim 'events' is defined. This claim is required.");
             }
 
             if (!_claims.ContainsKey("iat"))
